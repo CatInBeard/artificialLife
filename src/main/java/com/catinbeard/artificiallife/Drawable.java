@@ -4,12 +4,12 @@
  */
 package com.catinbeard.artificiallife;
 
-import java.awt.Image;
+import java.awt.image.BufferedImage;
 
 /**
  *
  * @author Grigoriy Efimov <efimov-gm@newpage.xyz>
  */
 public interface Drawable {
-    public Image getImage();
+    public BufferedImage getImage();
 }

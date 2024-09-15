@@ -31,8 +31,23 @@ public class Field {
         return sizeY;
     }
     
+    public void triggerObservers(){
+        for (FieldObserver observer : observers) {
+            observer.UpdateField(this);
+        }
+    }
+    
     public void addObserver(FieldObserver fieldObserver){
         observers.add(fieldObserver);
         fieldObserver.UpdateField(this);
+    }
+    
+    public Drawable[][] getObjects(){
+        return objects;
+    }
+    
+    public void insertObject(int x, int y, Drawable d){
+        objects[x][y] = d;
+        triggerObservers();
     }
 }

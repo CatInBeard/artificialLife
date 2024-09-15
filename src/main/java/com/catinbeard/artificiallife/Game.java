@@ -4,19 +4,39 @@
  */
 package com.catinbeard.artificiallife;
 
+import java.io.IOException;
 
 /**
  *
  * @author Grigoriy Efimov <efimov-gm@newpage.xyz>
  */
 public class Game {
+
     protected Visualizer visualizer;
     protected Field field;
+
     public Game() {
-        
+
+        int size = 50;
+
         visualizer = new Visualizer();
-        field = new Field(5,5);
+        field = new Field(size, size);
         field.addObserver(visualizer);
         
+        initField();
     }
+    
+    protected void initField(){
+        try {
+            for (int i = 0; i < field.getSizeX(); i++) {
+                for (int j = 0; j < field.getSizeY(); j++) {
+                    if((i+j) % 2 == 0)
+                    field.insertObject(i, j, new Grass());
+                }
+            }
+
+        } catch (IOException e) {
+        }
+    }
+    
 }
