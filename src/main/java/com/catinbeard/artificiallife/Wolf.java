@@ -12,13 +12,13 @@ import javax.imageio.ImageIO;
  *
  * @author Grigoriy Efimov <efimov-gm@newpage.xyz>
  */
-public class Grass implements Drawable {
+public class Wolf implements Drawable {
     
     private static BufferedImage image;
     
-    public Grass() throws IOException{
+    public Wolf() throws IOException{
         if (image == null) {
-            image = ImageIO.read(getClass().getResource("/images/grass.svg"));
+            image = ImageIO.read(getClass().getResource("/images/wolf.svg"));
         }
     }
     
