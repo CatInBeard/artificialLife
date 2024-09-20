@@ -4,25 +4,23 @@
  */
 package com.catinbeard.artificiallife;
 
+import static com.catinbeard.artificiallife.Rabbit.INITIAL_ENERGY;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import javax.imageio.ImageIO;
 
 /**
  *
  * @author Grigoriy Efimov <efimov-gm@newpage.xyz>
  */
-public class Wolf implements Drawable {
+public class Wolf extends AIObject {
     
-    private static BufferedImage image;
+    public static final int ENERGY_DECREASE_BY_TURN = 5;
+    public static final int INITIAL_ENERGY = 50;
     
     public Wolf() throws IOException{
-        if (image == null) {
-            image = ImageIO.read(getClass().getResource("/images/wolf.svg"));
-        }
+        setSVGPath("/images/wolf.svg");
+        energyDecreaseByTurn = ENERGY_DECREASE_BY_TURN;
+        setEnergy(INITIAL_ENERGY);
     }
     
-    public BufferedImage getImage(){
-        return image;
-    }
 }

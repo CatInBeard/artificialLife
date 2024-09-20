@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
  *
  * @author Grigoriy Efimov <efimov-gm@newpage.xyz>
  */
-public class Game {
+public final class Game {
 
     protected Visualizer visualizer;
     protected Field field;
@@ -41,7 +41,7 @@ public class Game {
         initField();
     }
     
-    protected void initField(){
+    private void initField(){
         Random random = new Random();
         try {
             for (int i = 0; i < field.getSizeX(); i++) {
@@ -79,7 +79,19 @@ public class Game {
     }
     
     private void computeStep(){
-        System.out.println("1");
+        Drawable[][] objects = field.getObjects();
+        for (int i = 0; i < field.getSizeX(); i++) {
+            for (int j = 0; j < field.getSizeY(); j++) {
+                ObjectLogic object = (ObjectLogic) objects[i][j];
+                if(object == null)
+                        continue;
+                
+                if(!object.decreaseEnergyByTurn()){
+                    field.insertObject(i,j,null);
+                }
+                
+            }
+        }
     }
     
 }

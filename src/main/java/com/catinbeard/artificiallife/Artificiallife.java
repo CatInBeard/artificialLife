@@ -34,6 +34,6 @@ public class Artificiallife {
         
         
         Game game = new Game(size, grassRate, rabbitRate, wolfRate);
-        game.run();
+        game.run(10);
     }
 }

@@ -4,29 +4,23 @@
  */
 package com.catinbeard.artificiallife;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import javax.imageio.ImageIO;
-
 /**
  *
  * @author Grigoriy Efimov <efimov-gm@newpage.xyz>
  */
-public class Grass extends Drawable implements ObjectLogic {
-    
-    public static final int GRASS_ENERGY = 100;
-    
-    public Grass() throws IOException{
-        setSVGPath("/images/grass.svg");
-    }
-    
-    
+public abstract class AIObject extends Drawable implements ObjectLogic {
+    protected int energyDecreaseByTurn = 1;
+    protected int energy;
+    @Override
     public boolean decreaseEnergyByTurn(){
-        return true;
+        energy = energy - energyDecreaseByTurn;
+        return energy > 0;
     }
-    
+    @Override
     public int getEnergy(){
-        return GRASS_ENERGY;
+        return energy;
     }
-    
+    protected void setEnergy(int e){
+        energy = e;
+    }
 }
